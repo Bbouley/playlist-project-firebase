@@ -93,6 +93,8 @@ form{
 .delete:hover{
   background-color: red;
   color :black;
+  cursor: hand;
+  cursor: pointer;
 }
 
 .remove-song{

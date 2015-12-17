@@ -269,26 +269,29 @@ $(document).ready (function(){
 
     var thisSong = songArray[songArrayIndex];
 
-    for (var i = 0; i < playlistArray.length; i++) {
+    if(confirm('Are you sure you want to delete this song?')){
 
-      for (var j = 0; j <= playlistArray[i].songs.length; j++) {
+      for (var i = 0; i < playlistArray.length; i++) {
 
-        if (playlistArray[i].songs[j] === thisSong){
-          playlistArray[i].songs.splice(j, 1);
+        for (var j = 0; j <= playlistArray[i].songs.length; j++) {
 
-          var newSongsArray = playlistArray[i].songs;
-          console.log(newSongsArray.length);
+          if (playlistArray[i].songs[j] === thisSong){
+            playlistArray[i].songs.splice(j, 1);
 
-          if ($('.playlist:eq(' + i + ')').hasClass('clicked')){
+            var newSongsArray = playlistArray[i].songs;
+            console.log(newSongsArray.length);
 
-           $('.showAfter'+i).remove();
-           $('.delete'+i).remove();
+            if ($('.playlist:eq(' + i + ')').hasClass('clicked')){
 
-            for (var m = newSongsArray.length-1; m >= 0; m--) {
-              newSongsArray[m].showAfterPlaylist(($('.playlist:eq(' + i + ')')), i);
-            }
-            ($('.playlist:eq(' + i + ')').after('<div class = \'delete delete' +i+ ' col-xs-2\'><h2>DELETE<br>THIS<br>PLAYLIST</h2><div>'));
+             $('.showAfter'+i).remove();
+             $('.delete'+i).remove();
+
+              for (var m = newSongsArray.length-1; m >= 0; m--) {
+                newSongsArray[m].showAfterPlaylist(($('.playlist:eq(' + i + ')')), i);
+              }
+              ($('.playlist:eq(' + i + ')').after('<div class = \'delete delete' +i+ ' col-xs-2\'><h2>DELETE<br>THIS<br>PLAYLIST</h2><div>'));
         }
+       }
       }
      }
     }
